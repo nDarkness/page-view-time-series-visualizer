@@ -6,9 +6,13 @@ register_matplotlib_converters()
 
 # Import data (Make sure to parse dates. Consider setting index column to 'date'.)
 df = pd.read_csv("fcc-forum-pageviews.csv")
+print(df.columns)
 
 # Clean data
-df = None
+percentile_bot = df["value"].quantile(0.025)
+percentile_top = df["value"].quantile(0.975)
+
+df = df.loc[(df["value"] <= percentile_top) & (df["value"] >= percentile_bot)]
 
 
 def draw_line_plot():
