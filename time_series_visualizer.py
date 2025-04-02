@@ -17,7 +17,12 @@ df = df.loc[(df["value"] <= percentile_top) & (df["value"] >= percentile_bot)]
 
 def draw_line_plot():
     # Draw line plot
+    fig, ax = plt.subplots(figsize=(32, 10), dpi=100)
+    ax.set_title("Daily freeCodeCamp Forum Page Views 5/2016-12/2019")
+    ax.set_xlabel("Date")
+    ax.set_ylabel("Page Views")
 
+    sns.lineplot(data=df, legend=False)
 
 
 
